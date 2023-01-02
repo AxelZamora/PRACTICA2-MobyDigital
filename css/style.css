@@ -14,6 +14,10 @@ body{
     background-color: #002c3e;
 }
 
+.episodeName{
+    font-size: 1.5rem;
+}
+
 /* navbar */
 .navbar{
     background-color: var(--dark);
