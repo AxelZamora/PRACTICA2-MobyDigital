@@ -61,11 +61,12 @@ getCharacters('https://rickandmortyapi.com/api/character/')
 let counter = 1
 
 next.addEventListener('click', () => {
-    getCharacters(`https://rickandmortyapi.com/api/character/?page=${++counter}&name=${searchInput.value}`)
+    getCharacters(`https://rickandmortyapi.com/api/character/?page=${++counter}&name=${searchInput.value}`), goToTop()
+
 })
 
 prev.addEventListener('click', () => {
-    getCharacters(`https://rickandmortyapi.com/api/character/?page=${--counter}&name=${searchInput.value}`)
+    getCharacters(`https://rickandmortyapi.com/api/character/?page=${--counter}&name=${searchInput.value}`), goToTop()
 })
 
 search.addEventListener('click', () => {
@@ -78,3 +79,6 @@ searchInput.addEventListener('keyup', () => {
     counter = 1
 })
 
+const goToTop = () => {
+    document.body.scrollIntoView();
+};
