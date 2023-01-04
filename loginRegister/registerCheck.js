@@ -1,4 +1,3 @@
-'use strict';
 
 // function to check for valid input
 function checkEmptyInput(inputID) {

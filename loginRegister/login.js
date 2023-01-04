@@ -22,10 +22,11 @@ loginForm.addEventListener('submit', (e) => {
         .then((resJson) => {
             console.log(resJson)
             let resultCode = resJson.header.resultCode
-            console.log(resultCode)
+            // console.log(resultCode)
             if (resultCode === 0) {
                 setTimeout(() => {
                     window.location.href = 'characters.html'
+                    localStorage.setItem('activeUser', 1)
                 }, 1200)
                 feedback.innerHTML = `<div class='alert alert-success py-1'>${resJson.header.message}</div>`
             } else {

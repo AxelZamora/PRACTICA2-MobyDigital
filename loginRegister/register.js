@@ -52,8 +52,3 @@ registerForm.addEventListener('submit', (e) => {
         })
         .catch((error) => console.log(error))
 })
-
-			// let authCheck = new AuthUser()
-			// if (authCheck.checkActiveUser()) {
-			// 	document.getElementById('registerForm').innerHTML = "<div class='alert alert-warning'>You are currently logged in <a href='users/dashboard.html'>My Dashboard</a></div>"
-			// }

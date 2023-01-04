@@ -5,6 +5,7 @@ const
     searchInput = document.getElementById('searchInput'),
     search = document.getElementById('search')
 
+
 const getEpisodes = (url) => {
     fetch(url)
         .then(res => res.json())

@@ -2,6 +2,7 @@ const gallery2 = document.querySelector('.gallery2')
 const gallery3 = document.querySelector('.gallery3')
 const imgId = localStorage.getItem('locationID')
 
+
 let url = `https://rickandmortyapi.com/api/location/${imgId}`
 
 const displayInformation = () => {
