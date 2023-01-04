@@ -12,6 +12,7 @@
 	<body class="body">
 		<div class="container mt-5">
 			<div class="d-flex justify-content-center">
+				<!-- register form -->
 				<form id="registerForm" class="bg-light form p-4" style="width: 100%; max-width: 400px">
 					<img src="img/logo.png" alt="" />
 					<div class="mb-3 mt-3">
@@ -30,12 +31,12 @@
 						<div></div>
 					</div>
 					<div class="mb-3 mt-3">
-						<label for="stack" class="form-label">Phone number:</label>
-						<input type="text" class="form-control" id="stack" placeholder="Phone number" name="stack" onkeyup="return checkStack('stack')" />
+						<label for="phone" class="form-label">Phone number:</label>
+						<input type="text" class="form-control" id="phone" placeholder="Phone number" name="phone" onkeyup="return numbers('phone')" />
 						<div></div>
 					</div>
 					<div id="feedback"></div>
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" class="btn btn-primary">Register</button>
 
 					<p class="d-block mt-2"><a href="index.html" class="text-decoration-none">Already have an Account ?</a></p>
 				</form>
@@ -44,7 +45,5 @@
 
 		<script src="loginRegister/registerCheck.js"></script>
 		<script src="loginRegister/register.js"></script>
-
-		<script></script>
 	</body>
 </html>

@@ -14,9 +14,6 @@ body{
     background-color: #002c3e;
 }
 
-.episodeName{
-    font-size: 1.5rem;
-}
 
 /* navbar */
 .navbar{
@@ -51,12 +48,12 @@ body{
     margin: 5px;
 }
 
-
 /* display */
 .gallery{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 1rem;
+    margin: 1rem;
 }
 @media (min-width: 376px) {   .gallery { grid-template-columns: repeat(1, 1fr); } }
 @media (min-width: 768px) {   .gallery { grid-template-columns: repeat(2, 1fr); } }
@@ -81,7 +78,6 @@ body{
 .characterDetail{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
 }
 
 /* paginador */
@@ -103,6 +99,7 @@ body{
     margin-bottom: 1rem;
     color: #fff;
     cursor: pointer;
+    max-width: 300px;
 }
 
 .form {
@@ -116,7 +113,7 @@ body{
     padding: 1rem;
     margin-bottom: 1rem;
     color: #fff;
-    max-width: 1200px;
+    max-width: 900px;
     height: 2400px;
 }
 .card:hover{
@@ -135,6 +132,12 @@ body{
     width: 300%;
     height: auto;
 }
+.episodeName{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #00b5cc
+}
+
 
 h1,h2,h3,h4,h5,h6{
     color:#fff;
@@ -162,6 +165,8 @@ img{
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+
 /* footer */
 .footer-top{
     padding: 90px;

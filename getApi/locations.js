@@ -43,6 +43,23 @@ const getEpisodes = (url) => {
             const $episodeCard = document.querySelectorAll('.oneCharacter')
             redirectToLocationDetail($episodeCard)
         })
+        .catch(() => {
+            let $div = document.createElement('div')
+            $div.setAttribute('style', ' font-size: 24px;')
+            $div.textContent = 'no matches'
+            gallery.append($div)
+
+            let span = document.createElement('span')
+            span.setAttribute('class', 'position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger')
+            search.append(span)
+            span.textContent = '0'
+
+            let span2 = document.createElement('span')
+            span2.textContent = '0'
+            span2.setAttribute('class', 'position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger')
+            next.append(span2)
+
+        })
 }
 
 const redirectToLocationDetail = ($episodeCard) => {
@@ -78,3 +95,4 @@ searchInput.addEventListener('keyup', () => {
     getEpisodes(`https://rickandmortyapi.com/api/location/?name=${searchInput.value}`)
     counter = 1
 })
+

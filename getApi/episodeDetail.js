@@ -1,9 +1,10 @@
+import getDetail from "./getDetail.js"
+
 const gallery2 = document.querySelector('.gallery2')
 const gallery3 = document.querySelector('.gallery3')
-const imgId = localStorage.getItem('episodeID')
+const episodeID = localStorage.getItem('episodeID')
 
-
-let url = `https://rickandmortyapi.com/api/episode/${imgId}`
+let url = `https://rickandmortyapi.com/api/episode/${episodeID}`
 
 const displayInformation = () => {
     fetch(url)
@@ -12,34 +13,16 @@ const displayInformation = () => {
             console.log(data)
             gallery2.innerHTML = `
             <div class= 'card' >
-            
             <p class = 'name'>Name: ${data.name}</p>
             <p class = 'air_date'>Air Date: ${data.air_date}</p>
-            
             <p class = 'code'>Code: ${data.episode}</p>
             `
-            let characterEpisodes = data.characters
-            // console.log(characterEpisodes)
+            let p = document.createElement('p')
+            p.textContent = 'Characters in this Episode:'
+            gallery3.append(p)
 
-            const getEpisodes = () => {
-                let p = document.createElement('p')
-                p.textContent = 'Characters in this Episode:'
-                gallery3.append(p)
-                characterEpisodes.forEach(element => {
-                    fetch(element)
-                        .then(res => res.json())
-                        .then(data => {
-                            // console.log(data)
-                            let $li = document.createElement('li')
-                            $li.setAttribute('class', 'episode')
-                            $li.textContent = ` - ${data.name}`
-                            gallery3.append($li)
-                        })
-                })
-            }
-            getEpisodes()
-
-
+            let characters = data.characters
+            getDetail(characters)
         })
 }
 displayInformation()

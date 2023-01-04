@@ -1,8 +1,9 @@
+import getDetail from "./getDetail.js"
 const gallery2 = document.querySelector('.gallery2')
 const gallery3 = document.querySelector('.gallery3')
-const imgId = localStorage.getItem('characterID')
+const characterID = localStorage.getItem('characterID')
 
-let url = `https://rickandmortyapi.com/api/character/${imgId}`
+let url = `https://rickandmortyapi.com/api/character/${characterID}`
 
 const displayInformation = () => {
     fetch(url)
@@ -14,35 +15,17 @@ const displayInformation = () => {
             <img src='${data.image}'>
             <span class = 'status'>Status: ${data.status}</span>
             <span class = 'name'>Name: ${data.name}</span>
-            
             <p class = 'gender'>Gender: ${data.gender}</p>
-            
             <p class = 'origin'>Origin: ${data.origin.name}</p>
             <p class = 'species'>Specie: ${data.species}</p>
             <p class = 'location'>Location: ${data.location.name}</p>
-            
-         
             `
-            let characterEpisodes = data.episode
-            // console.log(characterEpisodes)
+            let p = document.createElement('p')
+            p.textContent = 'Episodes:'
+            gallery3.append(p)
 
-            const getEpisodes = () => {
-                let p = document.createElement('p')
-                p.textContent = 'Episodes:'
-                gallery3.append(p)
-                characterEpisodes.forEach(element => {
-                    fetch(element)
-                        .then(res => res.json())
-                        .then(data => {
-                            // console.log(data)
-                            let $li = document.createElement('li')
-                            $li.setAttribute('class', 'episode')
-                            $li.textContent = ` Capitulo: ${data.id} - ${data.name}`
-                            gallery3.append($li)
-                        })
-                })
-            }
-            getEpisodes()
+            let characterEpisodes = data.episode
+            getDetail(characterEpisodes)
         })
 }
 displayInformation()

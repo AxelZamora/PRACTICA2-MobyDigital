@@ -1,5 +1,5 @@
 
-// function to check for valid input
+// Chequear que el campo no este vacio
 function checkEmptyInput(inputID) {
     let title = document.querySelector('#' + inputID).value.trim();
     if (title.length > 0) {
@@ -9,17 +9,16 @@ function checkEmptyInput(inputID) {
     displayMsgNxtElem(inputID, "<span class='text-danger'>Field cannot be Empty</span>");
     return false;
 }
-// function to display error/success message
+// display de error / success
 function displayMsgNxtElem(elementID, errorMsg) {
     let message = document.querySelector("#" + elementID);
     message.nextElementSibling.innerHTML = errorMsg;
     return true;
 }
-// function to display error/success message
+// display de error / success
 function displayMsg(elementID, errorMsg) {
     let message = document.querySelector("#" + elementID);
     message.innerHTML = errorMsg;
-    // clear message after 2 sec 
     setTimeout(() => {
         message.innerHTML = '';
     }, 2500);
@@ -48,7 +47,7 @@ function checkFullName(id) {
         return false;
     }
 }
-function checkStack(id) {
+function numbers(id) {
     let username = document.querySelector('#' + id).value.trim();
     let regExp = /^[0-9]+$/;
     if (regExp.test(username)) {
@@ -58,9 +57,4 @@ function checkStack(id) {
         displayMsgNxtElem(id, "<span class='text-danger'>Only numbers</span>");
         return false;
     }
-}
-
-function getUser(key) { // allUsers
-    let allUsers = JSON.parse(localStorage.getItem(key)) || [];
-    return allUsers;
 }

@@ -4,22 +4,22 @@ registerForm.addEventListener('submit', (e) => {
     let username = document.querySelector('#username').value
     let password = document.querySelector('#password').value
     let fullname = document.querySelector('#fullname').value
-    let stack = document.querySelector('#stack').value
+    let phone = document.querySelector('#phone').value
 
-    if (checkEmptyInput('password') == true && checkFullName('fullname') === true && checkStack('stack') === true && checkUsername('username') === true) {
-        // let registerUser = new RegisterLogin(username, password)
-        // registerUser.registerUser(fullname, stack)
+    if (checkEmptyInput('password') == true && checkFullName('fullname') === true && numbers('phone') === true && checkUsername('username') === true) {
+        console.log('ok')
     } else {
         checkEmptyInput('password')
         checkUsername('username')
         checkFullName('fullname')
-        checkStack('stack')
+        numbers('phone')
     }
 
     let data = {
         name: fullname,
         password: password,
         mail: username,
+        phone: phone,
     }
 
     fetch('https://api-auth-moby.herokuapp.com/api/user/register', {
@@ -44,7 +44,7 @@ registerForm.addEventListener('submit', (e) => {
                     document.querySelector('#username').value = ''
                     document.querySelector('#password').value = ''
                     document.querySelector('#fullname').value = ''
-                    document.querySelector('#stack').value = ''
+                    document.querySelector('#phone').value = ''
                     feedback.innerHTML = ''
                 }, 2000)
                 feedback.innerHTML = `<div class='alert alert-danger py-1'>${resJson.header.error}</div>`
