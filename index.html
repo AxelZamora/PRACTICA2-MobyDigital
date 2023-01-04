@@ -5,82 +5,75 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="shortcut icon" href="/img/logo.png" />
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<title>Rick and Morty API</title>
+		<title>Login</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+		<link rel="stylesheet" href="css/style.css" />
 	</head>
-	<body>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-		<script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
-		<!-- navbar -->
-		<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-			<div class="container">
-				<a class="navbar-brand" href="index.html">
+
+	<body class="body">
+		<div class="container mt-5">
+			<div class="d-flex justify-content-center">
+				<form class="bg-light form p-4" id="loginForm" style="width: 100%; max-width: 400px">
 					<img src="img/logo.png" alt="" />
-				</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav ms-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="index.html">Characters</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="episodes.html">Episodes</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="locations.html">Locations</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#galeria">Log Out</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-		<!-- searchbar -->
-		<main class="main">
-			<h1>Characters</h1>
-			<div class="searcher">
-				<input id="searchInput" placeholder="Search character" class="search" />
-				<button class="search btn btn-light btn btn-primary position-relative" id="search">Search</button>
-			</div>
-
-			<!-- characters -->
-			<div class="container">
-				<div class="wrapper">
-					<div class="gallery row"></div>
-				</div>
-			</div>
-
-			<!-- pagination -->
-			<div class="pagination">
-				<button class="boton btn btn-light btn btn-primary position-relative" id="prev">Prev</button>
-				<button class="boton btn btn-light btn btn-primary position-relative" id="next">Next</button>
-			</div>
-		</main>
-
-		<!-- footer -->
-		<div class="footer-top">
-			<div class="container">
-				<div class="row gy-3">
-					<div class="col-md-4">
-						<a href="index.html"><img class="logo" src="img/logo.png" alt="" /></a>
+					<div class="mb-3 mt-3">
+						<label for="username" class="form-label">Username:</label>
+						<input type="email" class="form-control" id="username" placeholder="email@example.com" name="username" />
+						<div class=""></div>
 					</div>
-					<div class="col-md-2">
-						<h5 class="text-white">Secciones</h5>
-						<ul class="list-unstyled">
-							<li><a href="#home">Characters</a></li>
-							<li><a href="#roadmap">Episodes</a></li>
-							<li><a href="#modalidad">Locations</a></li>
-							<li><a href="#galeria">Log Out</a></li>
-						</ul>
+					<div class="mb-3">
+						<label for="password" class="form-label">Password:</label>
+						<input type="password" class="form-control" id="password" placeholder="password" name="password" />
+						<div></div>
 					</div>
-				</div>
+					<div id="feedback"></div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+					<p class="d-block mt-2">click <a href="register.html" class="text-decoration-none">here to create an account</a></p>
+				</form>
 			</div>
 		</div>
+		<script>
+			const feedback = document.getElementById('feedback')
+			let loginForm = document.getElementById('loginForm')
+			loginForm.addEventListener('submit', (e) => {
+				e.preventDefault()
+
+				let username = document.querySelector('#username').value
+				let password = document.querySelector('#password').value
+
+				let data = {
+					mail: username,
+					password: password,
+				}
+
+				fetch('https://api-auth-moby.herokuapp.com/api/user/login', {
+					headers: {
+						'Content-type': 'application/json; charset=utf-8',
+					},
+					method: 'POST',
+					body: JSON.stringify(data),
+				})
+					.then((response) => response.json())
+					.then((resJson) => {
+						console.log(resJson)
+						let resultCode = resJson.header.resultCode
+						console.log(resultCode)
+						if (resultCode === 0) {
+							setTimeout(() => {
+								window.location.href = 'characters.html'
+							}, 1200)
+							feedback.innerHTML = `<div class='alert alert-success py-1'>${resJson.header.message}</div>`
+						} else {
+							setTimeout(() => {
+								document.querySelector('#username').value = ''
+								document.querySelector('#password').value = ''
+								feedback.innerHTML = ''
+							}, 2000)
+							feedback.innerHTML = `<div class='alert alert-danger py-1'>${resJson.header.error}</div>`
+						}
+					})
+					.catch((error) => console.log(error))
+			})
+		</script>
 	</body>
-	<script src="getApi/characters.js" type="module" async defer></script>
 </html>

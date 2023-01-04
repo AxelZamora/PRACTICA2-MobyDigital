@@ -63,13 +63,29 @@ const getEpisodes = (url) => {
                     let epId = ep.getAttribute('id')
 
                     localStorage.setItem('episodeID', epId)
-                    window.location.replace('./episodePage.html')
+                    window.location.replace('./episodeDetail.html')
 
                 })
             })
         })
 }
 
+
+let data = {
+    mail: "federicomorel17@gmial.com",
+    password: "f2345678"
+}
+
+fetch('https://api-auth-moby.herokuapp.com/api/user/login', {
+    headers: {
+        'Content-type': 'application/json; charset=utf-8'
+    },
+    method: 'POST',
+    body: JSON.stringify(data)
+})
+    .then(response => response.json())
+    .then(resJson => console.log(resJson))
+    .catch(error => console.log(error));
 
 
 

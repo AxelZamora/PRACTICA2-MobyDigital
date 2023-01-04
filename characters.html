@@ -5,10 +5,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="shortcut icon" href="/img/logo.png" />
-		<link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<title>Mobydigital pre-academy</title>
+		<title>Rick and Morty API</title>
 	</head>
 	<body>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
@@ -34,7 +33,7 @@
 							<a class="nav-link" href="locations.html">Locations</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#galeria">Log Out</a>
+							<a class="nav-link" href="/index.html">Log Out</a>
 						</li>
 					</ul>
 				</div>
@@ -43,13 +42,13 @@
 
 		<!-- searchbar -->
 		<main class="main">
-			<h1>Locations</h1>
+			<h1>Characters</h1>
 			<div class="searcher">
-				<input id="searchInput" placeholder="Search episode" class="search" />
+				<input id="searchInput" placeholder="Search character" class="search" />
 				<button class="search btn btn-light btn btn-primary position-relative" id="search">Search</button>
 			</div>
 
-			<!-- episodes -->
+			<!-- characters -->
 			<div class="container">
 				<div class="wrapper">
 					<div class="gallery row"></div>
@@ -82,5 +81,5 @@
 			</div>
 		</div>
 	</body>
-	<script src="getApi/locations.js" type="module" async defer></script>
+	<script src="getApi/characters.js" type="module" async defer></script>
 </html>

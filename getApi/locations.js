@@ -62,7 +62,7 @@ const getEpisodes = (url) => {
                     let loId = lo.getAttribute('id')
 
                     localStorage.setItem('locationID', loId)
-                    window.location.replace('./locationPage.html')
+                    window.location.replace('./locationDetail.html')
 
                 })
             })

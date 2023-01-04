@@ -105,6 +105,10 @@ body{
     cursor: pointer;
 }
 
+.form {
+    border-radius: 0.7rem;
+}
+
 .card2{
     background-color: var(--dark);
     border-radius: 0.3rem;

@@ -24,11 +24,9 @@ const getCharacters = (url) => {
                 let characterImgURL = element.image
                 let characterDetails = element.name
                 let characterId = element.id
-
                 let $div = document.createElement('div')
                 let img = document.createElement('img')
                 let $p = document.createElement('p')
-
 
                 $div.setAttribute('class', 'oneCharacter text-center  card container-fluid m-3 mb-5')
                 $p.textContent = characterDetails
@@ -40,21 +38,22 @@ const getCharacters = (url) => {
                 gallery.append($div)
                 $div.append(img)
                 $div.append($p)
-
             })
-
             const $characterImages = document.querySelectorAll('.charactersImg')
-            $characterImages.forEach(element => {
-                element.addEventListener('click', function () {
-                    let img = this
-                    let imgId = img.getAttribute('id')
-
-                    localStorage.setItem('characterID', imgId)
-                    window.location.replace('./characterPage.html')
-
-                })
-            })
+            redirectToCharacterDetail($characterImages)
         })
+}
+
+const redirectToCharacterDetail = ($characterImages) => {
+    $characterImages.forEach(element => {
+        element.addEventListener('click', function () {
+            let img = this
+            let imgId = img.getAttribute('id')
+
+            localStorage.setItem('characterID', imgId)
+            window.location.replace('./characterDetail.html')
+        })
+    })
 }
 
 getCharacters('https://rickandmortyapi.com/api/character/')
