@@ -17,12 +17,14 @@ const displayInformation = () => {
             <p class = 'air_date'>Air Date: ${data.air_date}</p>
             <p class = 'code'>Code: ${data.episode}</p>
             `
-            let p = document.createElement('p')
-            p.textContent = 'Characters in this Episode:'
-            gallery3.append(p)
+            gallery3.innerHTML = `<div class= 'card3' >`
+            // let p = document.createElement('p')
+            // p.textContent = 'Characters in this Episode:'
+            // gallery3.append(p)
 
             let characters = data.characters
-            getDetail(characters)
+            let description = 'Characters in this episode:'
+            getDetail(characters, description)
         })
 }
 displayInformation()

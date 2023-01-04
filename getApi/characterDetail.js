@@ -20,12 +20,14 @@ const displayInformation = () => {
             <p class = 'species'>Specie: ${data.species}</p>
             <p class = 'location'>Location: ${data.location.name}</p>
             `
-            let p = document.createElement('p')
-            p.textContent = 'Episodes:'
-            gallery3.append(p)
+            gallery3.innerHTML = `<div class= 'card3' >`
+            // let p = document.createElement('p')
+            // p.textContent = 'Episodes:'
+            // gallery3.append(p)
 
             let characterEpisodes = data.episode
-            getDetail(characterEpisodes)
+            let description = 'Episodes:'
+            getDetail(characterEpisodes, description)
         })
 }
 displayInformation()
