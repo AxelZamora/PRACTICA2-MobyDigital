@@ -21,77 +21,45 @@ const getEpisodes = (url) => {
             next.append(span2)
 
             data.results.forEach(element => {
-                // console.log(element)
-                // let characterImgURL = element.image
-                let episodeDetails = element.name
-                let episodeID = element.id
-                let airDate = element.air_date
-                let episodeCode = element.episode
-
                 let $div = document.createElement('div')
+                let $p = document.createElement('p')
                 let $p2 = document.createElement('p')
                 let $p3 = document.createElement('p')
-                // let img = document.createElement('img')
-                let $p = document.createElement('p')
                 let $p4 = document.createElement('p')
 
-                $p4.textContent = episodeCode
-                $p3.textContent = airDate
-                $p2.textContent = `Episode: ${episodeID}`
+                $p4.textContent = element.episode
+                $p3.textContent = element.air_date
+                $p2.textContent = `Episode: ${element.id}`
                 $div.setAttribute('class', 'oneCharacter text-center  card container-fluid m-3 mb-5')
-                $div.setAttribute('id', episodeID)
-                $p.textContent = episodeDetails
+                $div.setAttribute('id', element.id)
+                $p.textContent = element.name
                 $p.setAttribute('class', 'card-text episodeName')
-                // img.setAttribute('src', characterImgURL)
-                // img.setAttribute('class', 'charactersImg img-fluid')
-                // img.setAttribute('id', characterId)
 
                 gallery.append($div)
-                // $div.append(img)
                 $div.append($p2)
                 $div.append($p)
                 $div.append($p3)
                 $div.append($p4)
-
-
             })
 
             const $episodeCard = document.querySelectorAll('.oneCharacter')
-            $episodeCard.forEach(element => {
-                element.addEventListener('click', function () {
-                    let ep = this
-                    let epId = ep.getAttribute('id')
+            redirectToEpisodeDetail($episodeCard)
 
-                    localStorage.setItem('episodeID', epId)
-                    window.location.replace('./episodeDetail.html')
-
-                })
-            })
         })
 }
 
+const redirectToEpisodeDetail = ($episodeCard) => {
+    $episodeCard.forEach(element => {
+        element.addEventListener('click', function () {
+            let ep = this
+            let epId = ep.getAttribute('id')
 
-let data = {
-    mail: "federicomorel17@gmial.com",
-    password: "f2345678"
+            localStorage.setItem('episodeID', epId)
+            window.location.replace('./episodeDetail.html')
+
+        })
+    })
 }
-
-fetch('https://api-auth-moby.herokuapp.com/api/user/login', {
-    headers: {
-        'Content-type': 'application/json; charset=utf-8'
-    },
-    method: 'POST',
-    body: JSON.stringify(data)
-})
-    .then(response => response.json())
-    .then(resJson => console.log(resJson))
-    .catch(error => console.log(error));
-
-
-
-
-
-
 
 getEpisodes('https://rickandmortyapi.com/api/episode/')
 let counter = 1

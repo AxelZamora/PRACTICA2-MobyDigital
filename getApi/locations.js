@@ -21,60 +21,41 @@ const getEpisodes = (url) => {
             next.append(span2)
 
             data.results.forEach(element => {
-                // console.log(element)
-                // let characterImgURL = element.image
-                let episodeDetails = element.name
-                let type = element.type
-                let dimension = element.dimension
-                let id = element.id
-
-
                 let $div = document.createElement('div')
                 let $p2 = document.createElement('p')
                 let $p3 = document.createElement('p')
-                // let img = document.createElement('img')
                 let $p = document.createElement('p')
 
-
-                $p3.textContent = `Dimension: ${dimension}`
-                $p2.textContent = `Type: ${type}`
+                $p3.textContent = `Dimension: ${element.dimension}`
+                $p2.textContent = `Type: ${element.type}`
                 $div.setAttribute('class', 'oneCharacter text-center  card container-fluid m-3 mb-5')
-                $div.setAttribute('id', id)
-                $p.textContent = episodeDetails
+                $div.setAttribute('id', element.id)
+                $p.textContent = element.name
                 $p.setAttribute('class', 'card-text episodeName')
-                // img.setAttribute('src', characterImgURL)
-                // img.setAttribute('class', 'charactersImg img-fluid')
-                // img.setAttribute('id', characterId)
 
                 gallery.append($div)
-                // $div.append(img)
                 $div.append($p2)
                 $div.append($p)
                 $div.append($p3)
-
-
             })
 
             const $episodeCard = document.querySelectorAll('.oneCharacter')
-            $episodeCard.forEach(element => {
-                element.addEventListener('click', function () {
-                    let lo = this
-                    let loId = lo.getAttribute('id')
-
-                    localStorage.setItem('locationID', loId)
-                    window.location.replace('./locationDetail.html')
-
-                })
-            })
+            redirectToLocationDetail($episodeCard)
         })
 }
 
+const redirectToLocationDetail = ($episodeCard) => {
+    $episodeCard.forEach(element => {
+        element.addEventListener('click', function () {
+            let lo = this
+            let loId = lo.getAttribute('id')
 
+            localStorage.setItem('locationID', loId)
+            window.location.replace('./locationDetail.html')
 
-
-
-
-
+        })
+    })
+}
 
 getEpisodes('https://rickandmortyapi.com/api/location/')
 let counter = 1

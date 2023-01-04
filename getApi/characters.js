@@ -10,7 +10,7 @@ const getCharacters = (url) => {
         .then(res => res.json())
         .then(data => {
             gallery.innerHTML = ''
-            console.log(data)
+            // console.log(data)
             let span = document.createElement('span')
             span.setAttribute('class', 'position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger')
             search.append(span)
@@ -21,19 +21,18 @@ const getCharacters = (url) => {
             next.append(span2)
 
             data.results.forEach(element => {
-                let characterImgURL = element.image
-                let characterDetails = element.name
-                let characterId = element.id
                 let $div = document.createElement('div')
                 let img = document.createElement('img')
                 let $p = document.createElement('p')
 
                 $div.setAttribute('class', 'oneCharacter text-center  card container-fluid m-3 mb-5')
-                $p.textContent = characterDetails
+
                 $p.setAttribute('class', 'card-text characterName')
-                img.setAttribute('src', characterImgURL)
+                $p.textContent = element.name
+
+                img.setAttribute('src', element.image)
                 img.setAttribute('class', 'charactersImg img-fluid')
-                img.setAttribute('id', characterId)
+                img.setAttribute('id', element.id)
 
                 gallery.append($div)
                 $div.append(img)
@@ -57,6 +56,8 @@ const redirectToCharacterDetail = ($characterImages) => {
 }
 
 getCharacters('https://rickandmortyapi.com/api/character/')
+
+
 let counter = 1
 
 next.addEventListener('click', () => {
