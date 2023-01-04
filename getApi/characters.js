@@ -13,18 +13,16 @@ const getCharacters = (url) => {
             gallery.innerHTML = ''
             // console.log(data)
 
+            let span = document.createElement('span')
+            span.setAttribute('class', 'position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-info')
+            search.append(span)
+            span.textContent = data.info.count
+            let span2 = document.createElement('span')
+            span2.textContent = data.info.pages
+            span2.setAttribute('class', 'position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-info')
+            next.append(span2)
 
             data.results.forEach(element => {
-
-                let span = document.createElement('span')
-                span.setAttribute('class', 'position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger')
-                search.append(span)
-                span.textContent = data.info.count
-                let span2 = document.createElement('span')
-                span2.textContent = data.info.pages
-                span2.setAttribute('class', 'position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger')
-                next.append(span2)
-
 
                 let $div = document.createElement('div')
                 let img = document.createElement('img')
@@ -54,13 +52,13 @@ const getCharacters = (url) => {
                 gallery.append($div)
 
                 let span = document.createElement('span')
-                span.setAttribute('class', 'position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger')
+                span.setAttribute('class', 'position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-info')
                 search.append(span)
                 span.textContent = '0'
 
                 let span2 = document.createElement('span')
                 span2.textContent = '0'
-                span2.setAttribute('class', 'position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger')
+                span2.setAttribute('class', 'position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-info')
                 next.append(span2)
 
             })

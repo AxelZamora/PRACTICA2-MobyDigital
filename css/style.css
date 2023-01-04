@@ -21,6 +21,11 @@ body{
     box-shadow: var(--box-shadow);
  }
 
+ .navbar .nav-link:hover{
+        color:   #00b5cc
+
+ }
+
 .navbar-brand img{
        height: 60px;
  }
