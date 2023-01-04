@@ -27,7 +27,7 @@ function displayMsg(elementID, errorMsg) {
 
 function checkUsername(id) {
     let username = document.querySelector('#' + id).value.trim();
-    let regExp = /^[A-Za-z][A-Za-z0-9!@.]*$/;
+    let regExp = /^[A-Za-z][A-Za-z0-9!@.-_]*$/;
     if (regExp.test(username)) {
         displayMsgNxtElem(id, "");
         return true;
