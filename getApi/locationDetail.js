@@ -17,12 +17,7 @@ const displayInformation = () => {
             <p class = 'type'>Type: ${data.type}</p>
             <p class = 'Dimension'>Code: ${data.dimension}</p>
             `
-
             gallery3.innerHTML = `<div class= 'card3' >`
-            // let p = document.createElement('p')
-            // p.textContent = 'Residents in this location:'
-            // gallery3.append(p)
-
             let residents = data.residents
             let description = 'Residents in this location:'
             getDetail(residents, description)

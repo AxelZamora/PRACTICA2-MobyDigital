@@ -18,10 +18,6 @@ const displayInformation = () => {
             <p class = 'code'>Code: ${data.episode}</p>
             `
             gallery3.innerHTML = `<div class= 'card3' >`
-            // let p = document.createElement('p')
-            // p.textContent = 'Characters in this Episode:'
-            // gallery3.append(p)
-
             let characters = data.characters
             let description = 'Characters in this episode:'
             getDetail(characters, description)
